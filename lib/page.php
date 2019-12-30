@@ -40,11 +40,16 @@ class page {
 		# To be defined in a configuration file.
 		$this->_app['title'] = app_name();
 		$this->_app['logo'] = IMGDIR.'/logo-small.png';
+                $this->_app['urlfavicon'] = IMGDIR.'/favicon.ico';
 
 		if (! is_null($index))
 			$this->_app['urlcss'] = sprintf('%s/%s',CSSDIR,$_SESSION[APPCONFIG]->getValue('appearance','stylesheet'));
 		else
 			$this->_app['urlcss'] = sprintf('%s/%s',CSSDIR,'style.css');
+
+		if (!is_file(realpath( $this->_app['urlfavicon'])) ) {
+                    $this->_app['urlfavicon'] = 'images/favicon.ico';
+                }
 
 		# Default Values for configurable items.
 		$this->_default['sysmsg']['error'] = IMGDIR.'/error-big.png';
@@ -117,7 +122,7 @@ class page {
 		else
 			printf('<title>%s - %s</title>',$this->_app['title'],app_version());
 
-		echo '<link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon" />';
+		printf('<link rel="shortcut icon" href="%s" type="image/vnd.microsoft.icon" />', $this->_app['urlfavicon']);
 		# Style sheet.
 		printf('<link type="text/css" rel="stylesheet" href="%s" />',$this->_app['urlcss']);
 
