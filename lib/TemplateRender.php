@@ -2078,11 +2078,11 @@ function fillRec(id,value) {
 			$this->getServerID(),$this->template->getDNEncode(),rawurlencode($attribute->getName(false))));
 
 		if (isAjaxEnabled())
-			return sprintf('(<a href="cmd.php?%s" title="%s %s" onclick="return ajDISPLAY(\'ADDVALUE%s\',\'%s&amp;raw=1\',\'%s\',1);">%s</a>)',
+			return sprintf('(<a class="btn btn_add" href="cmd.php?%s" title="%s %s" onclick="return ajDISPLAY(\'ADDVALUE%s\',\'%s&amp;raw=1\',\'%s\',1);">%s</a>)',
 				$href_parm,_('Add an additional value to attribute'),$attribute->getName(false),$attribute->getName(),
 				$href_parm,str_replace('\'','\\\'',_('Add Value to Attribute')),_('add value'));
 		else
-			return sprintf('(<a href="cmd.php?%s" title="%s %s">%s</a>)',
+			return sprintf('(<a class="btn btn_add" href="cmd.php?%s" title="%s %s">%s</a>)',
 				$href_parm,_('Add an additional value to attribute'),$attribute->getName(false),_('add value'));
 	}
 
@@ -2114,12 +2114,12 @@ function fillRec(id,value) {
 			$this->getServerID(),$this->template->getDNEncode(),rawurlencode($attribute->getName()));
 
 		if (isAjaxEnabled())
-			return sprintf('(<a href="cmd.php?%s" title="%s: %s" onclick="return ajDISPLAY(\'BODY\',\'%s\',\'%s\');">%s</a>)',
+			return sprintf('(<a class="btn btn_modify" href="cmd.php?%s" title="%s: %s" onclick="return ajDISPLAY(\'BODY\',\'%s\',\'%s\');">%s</a>)',
 				htmlspecialchars($href),_('Modify members for'),$this->template->getDN(),
 				htmlspecialchars($href),str_replace('\'','\\\'',_('Modify group membership')),
 				_('modify group members'));
 		else
-			return sprintf('(<a href="cmd.php?%s" title="%s: %s">%s</a>)',
+			return sprintf('(<a class="btn btn_modify" href="cmd.php?%s" title="%s: %s">%s</a>)',
 				htmlspecialchars($href),_('Modify members for'),$this->template->getDN(),_('modify group members'));
 	}
 
@@ -2132,7 +2132,7 @@ function fillRec(id,value) {
 		$href = sprintf('cmd.php?cmd=rename_form&server_id=%s&dn=%s&template=%s',
 			$this->getServerID(),$this->template->getDNEncode(),$this->template->getID());
 
-		return sprintf('<small>(<a href="%s">%s</a>)</small>',htmlspecialchars($href),_('rename'));
+		return sprintf('<small>(<a class="btn btn_rename" href="%s">%s</a>)</small>',htmlspecialchars($href),_('rename'));
 	}
 
 	/** values **/
